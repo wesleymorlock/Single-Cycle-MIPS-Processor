@@ -5,10 +5,10 @@ Project 1
 
 Design:
 This project is made up of 15 different modules, all included and run from a single testbench. The modules included in the project are:
-	-alu.v
 	-adder.v
-	-andGate.v
 	-add4.v
+	-alu.v
+	-andGate.v
 	-control.v
 	-getJumpAddr.v
 	-memory.v
@@ -28,12 +28,13 @@ Based on the single cycle cpu diagram (found in project description: http://www.
 -how it works, what runs when (based on sensitivity/clock)
 
 Compilation:
+
 -running makefile and what it does to write add_test and fibonacci
 
-To compile the project into a working executable, navigate to the directory and run the following command: `iverilog -o fibOutput myTestbench.v`.
+To compile the project into a working executable, navigate to the modules directory and run the following command: `iverilog -o fibOutput myTestbench.v`.
 
 Execution: 
-After compiling, the program can be executed by running the command `vvp fibOutput`. Running the current program will execute fibonacci, which outputs a value of 55 as the 10th number in the fibonacci sequence. To execute the `add_test` program, in the `memory.v` file, change the `$readmemh` statement to read from `add_test.v` instead of ` 
+After compiling, the program can be executed by running the command `vvp fibOutput`. Running the current program will execute fibonacci, which outputs a value of 55 as the 10th number in the fibonacci sequence. To execute the `add_test` program, in the `memory.v` file, change the `$readmemh` statement to read from `add_test.v` instead of `fibonacciRefined.v`. For the alternate fibonacci files, change this to `fibonacciRefined5` or `fibonaaciRefined20`. And again compile and run using the same commands.  
 
 Testing:
 In terms of testing, statistics were run on the add_test and fibonacci files. For additional statistics, additional fibonacciRefined files were modified to output the 5th and 20th fibonacci numbers. The results of these statistics were as follows:
@@ -61,7 +62,7 @@ fibonacciRefined20.v
  clock cycles:     257056,
  number of instructions:     257056,
  Instructions per Clock Cycle: 1.000000
-**NOTE: to get this execution to run fully, the timestep for `$finish` in `myTest.v` needed to be increased to `#10000000
+NOTE: to get this execution to run fully, the timestep for `$finish` in `myTest.v` needed to be increased to `#10000000
 
 From these results, it is clear that these programs are running on a single cycle cpu because of the fact that the IPC is always 1. Another important result is the amount of time required for each of the program executions. `add_test` does not require a lot of time because it is a much simpler program with just a few arithmetic instructions. As we move to fibonacci, however, the program includes branching, loading and storing in memory, as well is syscalls. The program executes in a loop until the desired fibonacci value is calculated. As number term for the fibonacci value increases (5, 10, or 20 in these tests), the number of time units increases significantly. This same relation shows in the clock cycles and number of instructions, because many more operations are required to calculate an nth fibonacci number. 
 

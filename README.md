@@ -36,8 +36,42 @@ Execution:
 After compiling, the program can be executed by running the command `vvp fibOutput`. Running the current program will execute fibonacci, which outputs a value of 55 as the 10th number in the fibonacci sequence. To execute the `add_test` program, in the `memory.v` file, change the `$readmemh` statement to read from `add_test.v` instead of ` 
 
 Testing:
+In terms of testing, statistics were run on the add_test and fibonacci files. For additional statistics, additional fibonacciRefined files were modified to output the 5th and 20th fibonacci numbers. The results of these statistics were as follows:
 
+add_test.v
+20 time units,
+ clock cycles:          7,
+ number of instructions:          7,
+ Instructions per Clock Cycle: 1.000000
 
+fibonacciRefined.v
+41500 time units,
+ clock cycles:       2076,
+ number of instructions:       2076,
+ Instructions per Clock Cycle: 1.000000
+
+fibonacciRefined5.v
+3500 time units,
+ clock cycles:        176,
+ number of instructions:        176,
+ Instructions per Clock Cycle: 1.000000
+
+fibonacciRefined20.v
+5141100 time units,
+ clock cycles:     257056,
+ number of instructions:     257056,
+ Instructions per Clock Cycle: 1.000000
+**NOTE: to get this execution to run fully, the timestep for `$finish` in `myTest.v` needed to be increased to `#10000000
+
+From these results, it is clear that these programs are running on a single cycle cpu because of the fact that the IPC is always 1. Another important result is the amount of time required for each of the program executions. `add_test` does not require a lot of time because it is a much simpler program with just a few arithmetic instructions. As we move to fibonacci, however, the program includes branching, loading and storing in memory, as well is syscalls. The program executes in a loop until the desired fibonacci value is calculated. As number term for the fibonacci value increases (5, 10, or 20 in these tests), the number of time units increases significantly. This same relation shows in the clock cycles and number of instructions, because many more operations are required to calculate an nth fibonacci number. 
+
+Furthermore, gtkwave images were created for each of these outputs. They can be found in the root directory under the names:
+	-add_test_gtk.png
+	-fib10_gtk.png
+	-fib5_gtk.png
+	-fib20_gtk.png
+These images show the exact changes of values throughout time.
+ 
 	-run with different numbers to get stats on:
 		-total sim time = monitor in syscall
 		-number of clock cycles = count in testbench

@@ -1,4 +1,8 @@
-/* regMux module for which register is the write register
+/* regMux module
+ *
+ * This mux is the same as the other mux, but takes 5 bit inputs. Its only use
+ * is to determine which register becomes the Write Register. This register is
+ * sent as an output to the registers module. 
  *
  */
 

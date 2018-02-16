@@ -4,7 +4,7 @@
 __start:            # define entry point for gcc
 
 li 		$sp, 0x7ffffffc
-li 		$a0, 10 # this number represents the nth fibonacci number - e.g. f(10) = 55
+li 		$a0, 5  # this number represents the nth fibonacci number - e.g. f(10) = 55
 nop			#upon compile, the nop will follow the jal to fill the branch delay slot.
 jal 	fibonacci
 

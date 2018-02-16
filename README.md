@@ -23,16 +23,21 @@ This project is made up of 15 different modules, all included and run from a sin
 
 The testbench, `myTest.v`, runs includes each of the module files, along with `mips.h`to include defined global constants for opcodes, function codes, register numbers, and control signal bit numbers. 
 
+Based on the single cycle cpu diagram (found in project description: http://www.eg.bucknell.edu/~csci320/2018-spring/project-1-single-cycle-mips/), timing is an important part of getting the cpu to operate. In verilog, this can be done using sensitivity statements which affect the always blocks of each module. The PC module is one of the few that runs on the positive edge of a clock. This is so that the operation is read at the beginning of a clock cycle and all of the other modules can run based on what is interpreted as the instruction at the current pc.  
+
 -how it works, what runs when (based on sensitivity/clock)
 
 Compilation:
 -running makefile and what it does to write add_test and fibonacci
+
 To compile the project into a working executable, navigate to the directory and run the following command: `iverilog -o fibOutput myTestbench.v`.
 
 Execution: 
 After compiling, the program can be executed by running the command `vvp fibOutput`. Running the current program will execute fibonacci, which outputs a value of 55 as the 10th number in the fibonacci sequence. To execute the `add_test` program, in the `memory.v` file, change the `$readmemh` statement to read from `add_test.v` instead of ` 
 
 Testing:
+
+
 	-run with different numbers to get stats on:
 		-total sim time = monitor in syscall
 		-number of clock cycles = count in testbench

@@ -1,0 +1,2 @@
+* Ignore all .vcd files
+/modules/*.vcd

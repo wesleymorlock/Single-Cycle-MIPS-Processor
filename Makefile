@@ -12,7 +12,7 @@ CFLAGS=-mno-abicalls -fpic -nostdlib -static
 LDFLAGS=-L/usr/remote/mipsel/lib/gcc/mipsel-buildroot-linux-uclibc/4.6.3 -lgcc
 
 # change this line as needed
-ASMSOURCE=add_test.s
+ASMSOURCE=fibonacciRefined20.s
 
 SREC_OUTPUT=$(ASMSOURCE:.s=.srec)
 VERILOG_OUTPUT=$(ASMSOURCE:.s=.v)

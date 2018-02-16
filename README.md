@@ -5,21 +5,22 @@ Project 1
 
 Design:
 This project is made up of 15 different modules, all included and run from a single testbench. The modules included in the project are:
-	-adder.v
-	-add4.v
-	-alu.v
-	-andGate.v
-	-control.v
-	-getJumpAddr.v
-	-memory.v
-	-memReadWrite.v
-	-mux.v
-	-pc.v
-	-registers.v
-	-regMux.v
-	-signExtend.v
-	-statistics.v
-	-syscall.v
+
+	adder.v
+	add4.v
+	alu.v
+	andGate.v
+	control.v
+	getJumpAddr.v
+	memory.v
+	memReadWrite.v
+	mux.v
+	pc.v
+	registers.v
+	regMux.v
+	signExtend.v
+	statistics.v
+	syscall.v
 
 The testbench, `myTest.v`, runs includes each of the module files, along with `mips.h`to include defined global constants for opcodes, function codes, register numbers, and control signal bit numbers. 
 
@@ -66,11 +67,12 @@ NOTE: to get this execution to run fully, the timestep for `$finish` in `myTest.
 
 From these results, it is clear that these programs are running on a single cycle cpu because of the fact that the IPC is always 1. Another important result is the amount of time required for each of the program executions. `add_test` does not require a lot of time because it is a much simpler program with just a few arithmetic instructions. As we move to fibonacci, however, the program includes branching, loading and storing in memory, as well is syscalls. The program executes in a loop until the desired fibonacci value is calculated. As number term for the fibonacci value increases (5, 10, or 20 in these tests), the number of time units increases significantly. This same relation shows in the clock cycles and number of instructions, because many more operations are required to calculate an nth fibonacci number. 
 
-Furthermore, gtkwave images were created for each of these outputs. They can be found in the root directory under the names:
-	-add_test_gtk.png
-	-fib10_gtk.png
-	-fib5_gtk.png
-	-fib20_gtk.png
+Furthermore, gtkwave images were created for each of these outputs. They can be found in the gtkwaves directory under the names:
+	
+	add_test_gtk.png
+	fib10_gtk.png
+	fib5_gtk.png
+	fib20_gtk.png
 These images show the exact changes of values throughout time.
  
 	-run with different numbers to get stats on:

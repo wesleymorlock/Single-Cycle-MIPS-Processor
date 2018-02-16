@@ -1,2 +1,3 @@
 * Ignore all .vcd files
 /modules/*.vcd
+/.nfs00000000064d0310000e11c0

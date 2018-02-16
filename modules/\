@@ -1,0 +1,15 @@
+/* adder module
+ *
+ */
+module adder(input [31:0] pcPlus4, input [31:0] signedImmediate, output [31:0] adderResult);
+
+  reg [31:0] shiftedImmediate;
+
+  always @(*)
+  begin
+    shiftedImmediate = signedImmediate << 2;
+
+    adderResult = pcPlus4 + signedImmediate;
+  end
+
+endmodule

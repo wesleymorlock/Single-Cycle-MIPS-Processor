@@ -12,7 +12,7 @@ module memory(input [31:0] currPC, output reg [31:0] instr, output reg [31:0] in
 
     initial begin
 	instructionCount = 0;
-        $readmemh("fibonacciRefined.v", mem);
+        $readmemh("add_test.v", mem);
     end
 
     always @(currPC) begin

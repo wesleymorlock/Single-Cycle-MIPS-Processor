@@ -363,12 +363,7 @@
 `define SIZE_HALF  2'h1
 `define SIZE_WORD  2'h2
 
-
-
-/*
- *
- */
-
+// Control Signal bits
 `define REGDST 10
 `define JUMP 9
 `define BRANCH 8

@@ -13,7 +13,7 @@
 `include "./memReadWrite.v"
 `include "./andGate.v"
 `include "./adder.v"
-
+`include "./statistics.v"
 
 
 /* testbench module
@@ -46,7 +46,8 @@ module testbench;
   wire isJAL;
   wire [31:0] JRmuxOut;
   wire [31:0] regRA;
-  
+  wire runStats;
+  wire [31:0] instructionCount;
 
   // get current pc
   pc PC_block(clk, nextPC, currPC);
@@ -55,7 +56,7 @@ module testbench;
   add4 PCadd4(currPC, PCplus4);
 
   // get instruction from memory
-  memory instructionMemory(currPC, instr);
+  memory instructionMemory(currPC, instr, instructionCount);
 
   // calculate jump address
   getJumpAddr JumpAddr_block(instr, PCplus4, jumpAddr);
@@ -73,7 +74,7 @@ module testbench;
   registers reg_block(clk, isJAL, currPC + 8, instr[25:21], instr[20:16], writeReg, writeData, controlSignals[`REGWRITE], readData1, readData2, regV0, regA0, regRA);
  
   // execute syscall if necessary
-  callSys testSyscall(syscall_control, regV0, regA0);
+  callSys testSyscall(syscall_control, regV0, regA0, runStats);
 
   // branch adder
   adder branchAdder(PCplus4, signExtendedValue, adderResult);
@@ -102,6 +103,8 @@ module testbench;
 
   //
   mux dataMemMux(controlSignals[`MEMTOREG], aluAddress, dataMemRead, writeData);
+
+  statistics finalStats(clk, runStats, instructionCount);
 
 always begin
   #10 clk = ~clk;

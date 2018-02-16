@@ -1,9 +1,14 @@
 Wesley Morlock
+
 CSCI 320
+
 Project 1
+
 16 February 2018
 
-Design:
+
+## **Design:**
+
 This project is made up of 15 different modules, all included and run from a single testbench. The modules included in the project are:
 
 	adder.v
@@ -37,7 +42,7 @@ Equally as important to the other modules, but more abundant is the MUX module. 
 While the workings are a bit more complicated and detailed than the above description, this is a high level design that the modules were modeled after and integrated in order to execute the test programs.
 
 
-Compilation:
+## **Compilation:**
 
 To compile the project into a working executable for the fibonacci program, navigate to the modules directory and run the following command: `iverilog -o fibOutput myTestbench.v`. 
 
@@ -53,7 +58,8 @@ fibonacci20:
 	Change `$readmemh` satement in memory.v to read `fibonacciRefined20.v`. Change the total run time in the always block of myTest.v to be `#1000000`. Compile with `iverilog -o fib20Output myTest.v`.
 
 
-Execution: 
+## **Execution:**
+
 After compiling, run any of the executables with the following:
 
 fibonacci:  `vvp fibOutput`
@@ -65,7 +71,8 @@ For each of the fibonacci executions, there should be a print statement with the
 
 For add_test, the output is a printed value of 3. 
 
-Testing:
+## **Testing:**
+
 In terms of testing, statistics were run on the add_test and fibonacci files. For additional statistics, additional fibonacciRefined files were modified to output the 5th and 20th fibonacci numbers. The results of these statistics were as follows:
 
 add_test.v:

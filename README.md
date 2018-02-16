@@ -61,7 +61,7 @@ add_test:  `vvp addTestOutput`
 fibonacci5:  `vvp fib5Output`
 fibonacci20:  `vvp fib20Output`
 
-For each of the fibonacci executions, there should be a print statement with the correct fibonacci value. There is also an output monitor statement that reports the time, clock cycles, number of instructions, and IPC.
+For each of the fibonacci executions, there should be a print statement with the correct fibonacci value. There is also an output monitor statement that reports the time, clock cycles, number of instructions, and IPC. To get this to print out more than just the final number, the syscall 1 would need to be moved to inside the loop of branches. This would result in printing every value instead of just the final end result.
 
 For add_test, the output is a printed value of 3. 
 
@@ -95,9 +95,9 @@ NOTE: to get this execution to run fully, the timestep for `$finish` in `myTest.
 
 From these results, it is clear that these programs are running on a single cycle cpu because of the fact that the IPC is always 1. Another important result is the amount of time required for each of the program executions. `add_test` does not require a lot of time because it is a much simpler program with just a few arithmetic instructions. As we move to fibonacci, however, the program includes branching, loading and storing in memory, as well is syscalls. The program executes in a loop until the desired fibonacci value is calculated. As number term for the fibonacci value increases (5, 10, or 20 in these tests), the number of time units increases significantly. This same relation shows in the clock cycles and number of instructions, because many more operations are required to calculate an nth fibonacci number. 
 
-To know these work, printed registers.....
+To know that the programs were executing properly, `$display` statments were used to output registers and other important values to ensure that they were being changed at the correct times and to correct values. This made debugging easier to see which registers or values were being set incorrectly and which operations may be the cause of those problems. A lot of this can also be viewed from a gtkwave file, but for the sake of debugging, the display and monitor statements were easiest.
 
-Furthermore, gtkwave images were created for each of the outputs to show that everything was manipulated properly over the execution of the program. They can be found in the gtkwaves directory under the names:
+Once the programs all executed correctly, gtkwave images were created for each of the outputs to show that everything was manipulated properly over the execution of the program. They can be found in the gtkwaves directory under the names:
 	
 	add_test_gtk.png
 	fib10_gtk.png

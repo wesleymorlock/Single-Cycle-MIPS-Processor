@@ -6,6 +6,7 @@ Project 1
 
 16 February 2018
 
+This project can be found on GITHUB at: https://github.com/wesleymorlock/Single-Cycle-MIPS-Processor.
 
 ## **Design:**
 
